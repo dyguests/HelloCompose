@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -45,9 +46,9 @@ private fun SimpleWidgetColumn() {
         Text(text = "Text1")
         Text(text = "Text1")
         val context = LocalContext.current
-        var text = remember { "Button" }
-        Button(onClick = { text = "23333" }) {
-            Text(text = text)
+        val text = remember { mutableStateOf("Button") }
+        Button(onClick = { text.value = "23333" }) {
+            Text(text = text.value)
         }
         TextField(value = "", onValueChange = {}, placeholder = { Text(text = "Placeholder") }, colors = TextFieldDefaults.colors())
         Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "A dog")
