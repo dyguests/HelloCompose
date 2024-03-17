@@ -1,7 +1,6 @@
 package com.fanhl.hellocompose
 
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -15,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -45,8 +45,9 @@ private fun SimpleWidgetColumn() {
         Text(text = "Text1")
         Text(text = "Text1")
         val context = LocalContext.current
-        Button(onClick = { Toast.makeText(context, "This is Toast", Toast.LENGTH_SHORT).show() }) {
-            Text(text = "Button")
+        var text = remember { "Button" }
+        Button(onClick = { text = "23333" }) {
+            Text(text = text)
         }
         TextField(value = "", onValueChange = {}, placeholder = { Text(text = "Placeholder") }, colors = TextFieldDefaults.colors())
         Image(painter = painterResource(id = R.drawable.ic_launcher_foreground), contentDescription = "A dog")
